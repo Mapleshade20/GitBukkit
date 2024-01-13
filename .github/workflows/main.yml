@@ -46,10 +46,14 @@ jobs:
       #    curl -fsSL https://get.pnpm.io/install.sh | sh -
         
       - name: Initialize submodules
-        run: cd daed/wing && git submodule update --init --recursive && cd .. & cd ..
+        run: | 
+          cd daed/wing
+          git submodule update --init --recursive
 
       - name: Build daed
-        run: cd daed && make VERSION=0.5.0 CGO_ENABLED=0 & cd ..
+        run: |
+          cd daed
+          make VERSION=0.5.1 CGO_ENABLED=0 -j1 V=s
 
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v4.1.0
