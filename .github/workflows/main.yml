@@ -20,8 +20,6 @@ jobs:
 
       #- name: Install pnpm
       #  run: curl -fsSL https://get.pnpm.io/install.sh | sh -
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2.4.0
           
       #- name: Install Go
       #  run: |
@@ -40,6 +38,9 @@ jobs:
           git clone https://github.com/daeuniverse/dae daed/wing/dae-core
           git clone https://github.com/daeuniverse/dae_bpf_headers daed/wing/dae-core/control/kern/headers
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2.4.0
+        
       - name: Initialize submodules
         run: cd daed/wing && git submodule update --init --recursive && cd .. & cd ..
 
