@@ -53,11 +53,11 @@ jobs:
       - name: Build daed
         run: |
           cd daed
-          make VERSION=0.5.1 CGO_ENABLED=0 -j1 V=s
+          make VERSION=0.5.1 CGO_ENABLED=0 -j2 V=s
 
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v4.1.0
         with:
           name: daed
-          path: daed
-          
+          path: daed/daed
+          if-no-files-found: error
