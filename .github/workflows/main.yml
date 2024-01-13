@@ -17,9 +17,6 @@ jobs:
         run: |
           sudo apt install -y git curl nodejs make clang
           sudo apt install -y linux-headers-$(uname -r)
-
-      #- name: Install pnpm
-      #  run: curl -fsSL https://get.pnpm.io/install.sh | sh -
           
       #- name: Install Go
       #  run: |
@@ -39,8 +36,12 @@ jobs:
           git clone https://github.com/daeuniverse/dae_bpf_headers daed/wing/dae-core/control/kern/headers
           cd daed
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2.4.0
+      #- name: Setup pnpm
+      #  uses: pnpm/action-setup@v2.4.0
+      - name: Install pnpm
+        run: | 
+          cd daed
+          curl -fsSL https://get.pnpm.io/install.sh | sh -
         
       - name: Initialize submodules
         run: cd daed/wing && git submodule update --init --recursive && cd .. & cd ..
