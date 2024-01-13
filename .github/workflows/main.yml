@@ -18,14 +18,20 @@ jobs:
           sudo apt install -y git curl nodejs make clang
           sudo apt install -y linux-headers-$(uname -r)
 
-      - name: Install pnpm
-        run: curl -fsSL https://get.pnpm.io/install.sh | sh -
-
-      - name: Install Go
-        run: |
-          wget https://golang.google.cn/dl/go1.21.5.linux-amd64.tar.gz
-          sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go1.21.5.linux-amd64.tar.gz
-          export PATH=$PATH:/usr/local/go/bin
+      #- name: Install pnpm
+      #  run: curl -fsSL https://get.pnpm.io/install.sh | sh -
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2.4.0
+          
+      #- name: Install Go
+      #  run: |
+      #    wget https://golang.google.cn/dl/go1.21.5.linux-amd64.tar.gz
+      #    sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go1.21.5.linux-amd64.tar.gz
+      #    export PATH=$PATH:/usr/local/go/bin
+      - name: Setup Golang
+        uses: actions/setup-go@v5.0.0
+        with:
+          go-version: '1.21.5' # The Go version to download (if necessary) and use.
 
       - name: Clone repositories
         run: |
