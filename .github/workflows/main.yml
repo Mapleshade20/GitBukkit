@@ -37,6 +37,7 @@ jobs:
           git clone https://github.com/daeuniverse/dae-wing daed/wing
           git clone https://github.com/daeuniverse/dae daed/wing/dae-core
           git clone https://github.com/daeuniverse/dae_bpf_headers daed/wing/dae-core/control/kern/headers
+          cd daed
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v2.4.0
